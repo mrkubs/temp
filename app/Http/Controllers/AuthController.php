@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\Authenticate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Support\ValidatedData;
 
 class AuthController extends Controller
 {
@@ -15,8 +17,7 @@ class AuthController extends Controller
         return view('auth.login', [
             "title"=> "Login",
             'isAuthPage' => true,
-            
-            
+        
             ]);
     }
 
@@ -27,9 +28,10 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
+        //dd('Login Successful');
         if (Auth::attempt($cred)) {
             $request->session()->regenerate();
-            return redirect()->intended('');
+            return redirect()->intended('admin');
             
         }
             return back()->with('logError', 'Login Failed');
