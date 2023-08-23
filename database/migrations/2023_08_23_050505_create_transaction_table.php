@@ -13,17 +13,12 @@ return new class extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('pesanan_id');
             $table->integer('total_bayar');
             $table->integer('jumlah_bayar');
             $table->integer('kembalian')->nullable();
             $table->string('status');
             $table->timestamps();
-
-            $table->foreign('users_id')->references('id')->on('users')
-                ->onDelete('no action')->onUpdate('no action');
-
             $table->foreign('pesanan_id')->references('id')->on('pesanan')
                 ->onDelete('no action')->onUpdate('no action');
         });

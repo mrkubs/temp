@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('alamat')->nullable();
             $table->string('nohp')->unique();
+            $table->enum('level', ['admin', 'kasir', 'manager']);
             $table->rememberToken();
             $table->timestamps();
         });
