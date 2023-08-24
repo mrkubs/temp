@@ -27,6 +27,7 @@ Route::controller(AuthController::class)->group(function () {
 //->middleware('guest')
 });
 
-//Route::group(['middleware' => ['admin', 'kasir','manager']], function(){
-//    Route::resource('/admin', AdminController::class);
-//});
+Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
+    Route::resource('/dashboard', AdminController::class);
+});
+

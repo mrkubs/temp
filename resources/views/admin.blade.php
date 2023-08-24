@@ -8,7 +8,7 @@
     <title>Admin Page - {{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="/admin-style.css">
+    <link rel="stylesheet" href="/assets/css/admin-style.css">
     <script src="https://kit.fontawesome.com/dbc8973e7a.js" crossorigin="anonymous"></script>
 </head>
 
@@ -34,7 +34,7 @@
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!--<script>
+    <script>
         $(".sidebar ul li").on('click', function() {
             $(".sidebar ul li.active").removeClass('active');
             $(this).addClass('active');

@@ -43,6 +43,17 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'all' => [
+            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \App\Http\Middleware\AdminMiddleware::class,
+            \App\Http\Middleware\KasirMiddleware::class,
+            \App\Http\Middleware\ManagerMiddleware::class,
+        ],
+        'superuser' => [
+            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \App\Http\Middleware\AdminMiddleware::class,
+            \App\Http\Middleware\ManagerMiddleware::class,
+        ],
     ];
 
     /**
@@ -64,8 +75,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'kasir' => \App\Http\Middleware\KasirMiddleware::class,
-        'manager' => \App\Http\Middleware\ManagerMiddleware::class,
+        'level' => \App\Http\Middleware\CekLevelMiddleware::class,
     ];
+    
 }
