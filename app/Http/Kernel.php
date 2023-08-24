@@ -43,17 +43,6 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-        'all' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \App\Http\Middleware\AdminMiddleware::class,
-            \App\Http\Middleware\KasirMiddleware::class,
-            \App\Http\Middleware\ManagerMiddleware::class,
-        ],
-        'superuser' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \App\Http\Middleware\AdminMiddleware::class,
-            \App\Http\Middleware\ManagerMiddleware::class,
-        ],
     ];
 
     /**

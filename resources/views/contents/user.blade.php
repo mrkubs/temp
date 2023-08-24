@@ -18,8 +18,10 @@
                     <div class="card-header p-1 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                             <h6 class="text-uppercase font-weight-bold text-xxs ps-3">Users Table</h6>
-                            <div class="card-body p-1 px-4 py-3"><a href="/account/add"><button
-                                        class="btn btn-success">Add</button></a></div>
+                            @can('admin')
+                                <div class="card-body p-1 px-4 py-3"><a href="/account/add"><button
+                                            class="btn btn-success">Add</button></a></div>
+                            @endcan
                         </div>
                         <div class="col-5">
                             @if (session()->has('success'))
@@ -68,11 +70,13 @@
                                             <td class="align-middle">
                                                 <a href="/account/{{ $user->id }}"> <button
                                                         class="btn btn-primary">View</button></a>
-                                                <a href="/account/{{ $user->id }}/edit"><button
-                                                        class="btn btn-warning">Edit</button></a>
-                                                <a href="/account/delete/{{ $user->id }}"
-                                                    onclick="confifmAction()"><button
-                                                        class="btn btn-danger">Delete</button></a>
+                                                @can('admin')
+                                                    <a href="/account/{{ $user->id }}/edit"><button
+                                                            class="btn btn-warning">Edit</button></a>
+                                                    <a href="/account/delete/{{ $user->id }}"
+                                                        onclick="confifmAction()"><button
+                                                            class="btn btn-danger">Delete</button></a>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach

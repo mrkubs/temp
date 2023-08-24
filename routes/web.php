@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +16,24 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/admin', function () {
-    return view('welcome');
-})->middleware('auth');
+//Route::get('/admin', function () {
+//    return view('dashboard');
+//})->middleware('auth');
 
 //Autentikasi
 Route::controller(AuthController::class)->group(function () {
     Route::get('/login','index') ->name('login');
     Route::post('/login','authenticate') ->name('auth');
     Route::post('/logout','logout') ->name('logout');
-//->middleware('guest')
 });
 
+//Admin General Page
 Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
-    Route::resource('/dashboard', AdminController::class);
+    Route::resource('/dashboard', DashboardController::class);
+});
+
+//Superuser Page
+Route::group(['middleware' => ['auth','level:admin,manager']], function(){
+    Route::resource('/user', UserController::class);
 });
 

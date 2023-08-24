@@ -13,11 +13,13 @@
 
         <ul class="list-unstyled px-3">
             <li class="{{ $title === 'Dashboard' ? 'active' : '' }} py-2">
-                <a href="/" class="text-decoration-none"><i class="fa-solid fa-house px-2"></i>Dashboard</a>
+                <a href="/dashboard" class="text-decoration-none"><i class="fa-solid fa-house px-2"></i>Dashboard</a>
             </li>
-            <li class="{{ $title === 'Account' ? 'active' : '' }} py-2">
-                <a href="/user" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>User</a>
-            </li>
+            @can('superuser')
+                <li class="{{ $title === 'User' ? 'active' : '' }} py-2">
+                    <a href="/user" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>User</a>
+                </li>
+            @endcan
 
 
 

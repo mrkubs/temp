@@ -31,7 +31,7 @@ class AuthController extends Controller
         //dd('Login Successful');
         if (Auth::attempt($cred)) {
             $request->session()->regenerate();
-            return redirect()->intended('admin');
+            return redirect()->intended('dashboard');
             
         }
             return back()->with('logError', 'Login Failed');
