@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login', [
+        return view('auth.contents.login', [
             "title"=> "Login",
             'isAuthPage' => true,
         
@@ -46,5 +46,10 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function forgot()
+    {
+        return redirect('auth.forgot');
     }
 }
