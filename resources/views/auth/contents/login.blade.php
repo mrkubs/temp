@@ -39,12 +39,11 @@
                                     <input type="email" id="email" name="email"
                                         class="form-control @error('email') is-invalid @enderror"
                                         placeholder="Email Address" value="{{ old('email') }}" autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    @endif
                                 </div>
-                                @error('email')
-                                    <div class="invalid-feedback">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                @enderror
+
                                 <div class="form-outline mb-4">
                                     <label class="form-label text-white">Password</label>
                                     <input type="password" id="password" name="password"

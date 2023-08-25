@@ -4,7 +4,7 @@
     <main class="login-form my-5">
         <div class="cotainer">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="card justify-content-between">
                         <div class="card-header text-white text-center">Reset Password</div>
                         <div class="card-body">
