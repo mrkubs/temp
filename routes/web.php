@@ -3,8 +3,10 @@
 use App\Http\Controllers\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ Route::controller(ForgotPasswordController::class)->group(function(){
 //Admin General Page
 Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
     Route::resource('/dashboard', DashboardController::class);
+    Route::resource('/product', ProductController::class);
+    Route::resource('/categories', CategoryController::class);
 });
 
 //Superuser Page
