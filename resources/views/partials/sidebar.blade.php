@@ -15,6 +15,12 @@
             <li class="{{ $title === 'Dashboard' ? 'active' : '' }} py-2">
                 <a href="/dashboard" class="text-decoration-none"><i class="fa-solid fa-house px-2"></i>Dashboard</a>
             </li>
+            <li class="{{ $title === 'Product' ? 'active' : '' }} py-2">
+                <a href="/product" class="text-decoration-none"><i class="fa-solid fa-bowl-food px-2"></i>Product</a>
+            </li>
+            <li class="{{ $title === 'Categories' ? 'active' : '' }} py-2">
+                <a href="/categories" class="text-decoration-none"><i class="fa-brands fa-microsoft px-2"></i>categories</a>
+            </li>
             @can('superuser')
                 <li class="{{ $title === 'User' ? 'active' : '' }} py-2">
                     <a href="/user" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>User</a>

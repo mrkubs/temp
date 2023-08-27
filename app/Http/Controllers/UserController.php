@@ -15,7 +15,6 @@ class UserController extends Controller
         return view('contents.user', [
             "title"=> "User",
             "users"=> User::all()
-        
             ]);
     }
 
