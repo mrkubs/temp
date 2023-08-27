@@ -1,0 +1,7 @@
+Email Forgot Account
+
+smtp.mail.com
+jarvisresto@fastservice.com
+jarvisResto@2023!
+
+TLS:587

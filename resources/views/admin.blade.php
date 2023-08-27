@@ -47,7 +47,7 @@
         $('.close-btn').on('click', function() {
             $('.sidebar').removeClass('active');
         });
-    </script>-->
+    </script>
 </body>
 
 </html>

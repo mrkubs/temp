@@ -20,6 +20,9 @@
                     <a href="/user" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>User</a>
                 </li>
             @endcan
+            <li class="{{ $title === 'Category' ? 'active' : '' }} py-2">
+                <a href="/category" class="text-decoration-none"><i class="fa-solid fa-list px-2"></i>Category</a>
+            </li>
 
 
 

@@ -15,7 +15,7 @@
 
 <body>
     <section class="section" style=" ">
-        <div class="container w-100 p-4 h-100">
+        <div class="container p-5 h-100">
             @yield('login')
         </div>
     </section>
