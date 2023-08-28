@@ -19,19 +19,14 @@
                 <a href="/product" class="text-decoration-none"><i class="fa-solid fa-bowl-food px-2"></i>Product</a>
             </li>
             <li class="{{ $title === 'Categories' ? 'active' : '' }} py-2">
-                <a href="/categories" class="text-decoration-none"><i class="fa-brands fa-microsoft px-2"></i>categories</a>
+                <a href="/categories" class="text-decoration-none"><i
+                        class="fa-brands fa-microsoft px-2"></i>Categories</a>
             </li>
             @can('superuser')
                 <li class="{{ $title === 'User' ? 'active' : '' }} py-2">
                     <a href="/user" class="text-decoration-none"><i class="fa-regular fa-user px-2"></i>User</a>
                 </li>
             @endcan
-            <li class="{{ $title === 'Category' ? 'active' : '' }} py-2">
-                <a href="/category" class="text-decoration-none"><i class="fa-solid fa-list px-2"></i>Category</a>
-            </li>
-
-
-
             <li class=" py-2">
                 <form action="/logout" method="POST">
                     @csrf

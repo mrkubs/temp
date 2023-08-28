@@ -48,6 +48,7 @@
             $('.sidebar').removeClass('active');
         });
     </script>
+    @yield('footer')
 </body>
 
 </html>
