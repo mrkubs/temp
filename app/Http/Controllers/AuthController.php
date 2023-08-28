@@ -17,7 +17,6 @@ class AuthController extends Controller
         return view('auth.contents.login', [
             "title"=> "Login",
             'isAuthPage' => true,
-        
             ]);
     }
 

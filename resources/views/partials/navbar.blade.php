@@ -15,9 +15,7 @@
                     <a class="nav-link active" aria-current="page" href="#"><i
                             class="fa-solid fa-user border-radius-lg px-2"></i>{{ auth()->user()->name }}</a>
                 </li>
-
             </ul>
-
         </div>
     </div>
 </nav>
