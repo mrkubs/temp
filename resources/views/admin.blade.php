@@ -15,10 +15,10 @@
 <body>
     <div class="main-container d-flex">
         <!--Sidebar-->
-        @include('partials.sidebar')
+        @include('admin.partials.sidebar')
         <div class="content">
             <!--Navbar-->
-            @include('partials.navbar')
+            @include('admin.partials.navbar')
             <!--Contents-->
             @yield('content')
 

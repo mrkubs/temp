@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('contents.category.index', 
+        return view('admin.category.index', 
         [
             "title" => "Categories",
             "categories" => Categories::all()
