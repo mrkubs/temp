@@ -1,6 +1,7 @@
 @extends('index')
 
 @section('content')
+    @include('home.partials.navpart')
     <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -24,7 +25,9 @@
                 </div>
                 <div class="col-lg-6">
                     <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                    <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
+                    <h1 class="mb-4">Welcome to <img src="assets/images/logo-bk-crop.png" alt="Logo"
+                            style="height:25px">
+                    </h1>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
                         eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
                     <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et

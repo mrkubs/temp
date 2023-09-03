@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -12,7 +13,8 @@ class MenuController extends Controller
     public function index()
     {
         return view('home.contents.menu', [
-            "title"=> "Menu"
+            "title"=> "Menu",
+            "products" => Products::paginate(8)
             ]);
     }
 

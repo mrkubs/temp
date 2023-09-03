@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CategoryMenuController extends Controller
@@ -12,8 +13,10 @@ class CategoryMenuController extends Controller
     public function index()
     {
         return view('home.contents.category', [
-            "title"=> "Category"
+            "title"=> "Category",
+            "categories" => Categories::paginate(8)
             ]);
+            
     }
 
     /**
