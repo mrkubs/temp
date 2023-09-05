@@ -20,7 +20,7 @@
                             <h5 class="mt-5">{{ $category->nama }}</h5>
                             <small>Description</small>
                             <div class="mt-2">
-                                <a href="/menu" class="link-warning">View More</a>
+                                <a href="{{ url('view-category/' . $category->id) }}" class="link-warning">View More</a>
                             </div>
                         </div>
                     </div>

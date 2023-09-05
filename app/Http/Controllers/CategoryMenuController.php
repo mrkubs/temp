@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Category;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class CategoryMenuController extends Controller
@@ -18,6 +20,7 @@ class CategoryMenuController extends Controller
             ]);
             
     }
+
 
     /**
      * Show the form for creating a new resource.

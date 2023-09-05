@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
-class MenuController extends Controller
-{
+class ViewCategoryController extends Controller
+{   
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('home.contents.menu', [
-            "title"=> "Menu",
-            "products" => Products::all()
-            ]);
+        if(Categories::where('id',$id)->exists()){
+            $categories = Categories::where('id',$id)->first();
+            $products = Products::where('categories_id',$categories->id)->get();
+            $title = 'Menu';
+            return view('home.contents.menu', compact('categories','products','title'));
+
+        }else{
+            return redirect('/category')->with('status',"Category Doesn't Exist");
+        }
     }
 
     /**

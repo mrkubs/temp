@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryMenuController;
+use App\Http\Controllers\ViewCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +57,4 @@ Route::resource('/', HomeController::class);
 Route::resource('/category', CategoryMenuController::class);
 Route::resource('/menu', MenuController::class);
 Route::resource('/about', AboutController::class);
+Route::resource('/view-category/{id}', ViewCategoryController::class);
