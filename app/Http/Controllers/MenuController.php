@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class MenuController extends Controller
     {
         return view('home.contents.menu', [
             "title"=> "Menu",
-            "products" => Products::all()
+            "products" => Products::all(),
+            "categories" => Categories::all()
             ]);
     }
 

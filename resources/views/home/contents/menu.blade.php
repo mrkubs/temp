@@ -9,35 +9,30 @@
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu</h5>
-                <h1 class="mb-5">Our Menu</h1>
+                <h1 class="mb-3">Our Menu</h1>
                 <div class="row g-4 mb-3">
-                    <div class="col-sm-12">
-                        <form action="/category-filter" method="get">
+                    <div class="col-sm-12 d-flex justify-content-center">
+                        <form action="/search" method="get">
                             @csrf
-                            <div class="d-flex">
-                                <select name="gender" class="form-select">
-                                    <option value="female"
-                                        selected="{{ isset($_GET['gender']) && $_GET['gender'] == 'male' }}">
-                                        Female
-                                    </option>
-                                    <option value="male"
-                                        selected="{{ isset($_GET['gender']) && $_GET['gender'] == 'male' }}">
-                                        Male
-                                    </option>
-                                    <option value="" selected="">Select</option>
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <button type="submit" class="btn btn-secondary ">Filter</button>
-                            </div>
-                            <div class="d-flex">
-                                <input name="name" type="text" class="form-control" placeholder="Search Menu"
-                                    value="{{ isset($_GET['name']) ? $_GET['name'] : '' }}">
-                            </div>
-                            <div class="d-flex">
-                                <button type="submit" class="btn btn-secondary ">Search</button>
-                            </div>
+                            <div class="d-flex my-2">
+                                <div class="d-flex col-sm-6 px-2">
+                                    <select name="category" class="form-select">
+                                        @foreach ($cate as $category)
+                                            <option value="{{ $category->id }}"
+                                                {{ collect(request()->category)->contains($category->id) ? 'selected' : '' }}>
+                                                {{ $category->nama }}
+                                            </option>
+                                        @endforeach
+                                        <option value="" selected="">Category</option>
 
+                                    </select>
+                                    <button type="submit" class="btn btn-secondary mx-1">Filter</button>
+                                </div>
+                                <div class="d-flex col-sm-6 px-2">
+                                    <input name="name" type="text" class="form-control" placeholder="Search Menu"
+                                        value="{{ isset($_GET['name']) ? $_GET['name'] : '' }}">
+                                    <button type="submit" class="btn btn-secondary mx-1 ">Search</button>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -61,6 +56,7 @@
                 @endforeach
             </div>
         </div>
+    </div>
     </div>
     <!-- Team End -->
 @endsection

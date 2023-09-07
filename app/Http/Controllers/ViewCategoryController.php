@@ -13,11 +13,13 @@ class ViewCategoryController extends Controller
      */
     public function index($id)
     {
+        
         if(Categories::where('id',$id)->exists()){
+            $cate = Categories::all();
             $categories = Categories::where('id',$id)->first();
             $products = Products::where('categories_id',$categories->id)->get();
             $title = 'Menu';
-            return view('home.contents.menu', compact('categories','products','title'));
+            return view('home.contents.menu', compact('categories','products','title','cate'));
 
         }else{
             return redirect('/category')->with('status',"Category Doesn't Exist");

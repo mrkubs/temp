@@ -58,9 +58,13 @@ Route::resource('/', HomeController::class);
 Route::resource('/category', CategoryMenuController::class);
 Route::resource('/menu', MenuController::class);
 Route::resource('/about', AboutController::class);
-Route::resource('/view-category/{id}', ViewCategoryController::class);
+
+
+Route::controller(ViewCategoryController::class)->group(function(){
+    Route::get('/view-category/{id}','index');
+});
 
 //Filter
 Route::controller(MenuFilterController::class)->group(function(){
-    Route::get('/menu-search','search') ->name('menu.search');
+    Route::get('/search','search') ->name('menu.search');
 });
