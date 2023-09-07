@@ -10,6 +10,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuFilterController;
 use App\Http\Controllers\CategoryMenuController;
 use App\Http\Controllers\ViewCategoryController;
 
@@ -58,3 +59,8 @@ Route::resource('/category', CategoryMenuController::class);
 Route::resource('/menu', MenuController::class);
 Route::resource('/about', AboutController::class);
 Route::resource('/view-category/{id}', ViewCategoryController::class);
+
+//Filter
+Route::controller(MenuFilterController::class)->group(function(){
+    Route::get('/menu-search','search') ->name('menu.search');
+});
