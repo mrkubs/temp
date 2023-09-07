@@ -16,7 +16,7 @@ class MenuController extends Controller
         return view('home.contents.menu', [
             "title"=> "Menu",
             "products" => Products::all(),
-            "categories" => Categories::all()
+            "cate" => Categories::all()
             ]);
     }
 
