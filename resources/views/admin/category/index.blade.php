@@ -44,26 +44,22 @@
                                 <thead>
                                     <tr>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 px-5">
-                                            Nama</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                                            Name</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                                        </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="">
                                     @foreach ($categories as $item)
-                                        <tr>
+                                        <tr class="text-center">
                                             <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $item->nama }}</h6>
-                                                    </div>
-                                                </div>
-                                            <td class="">
+                                                <h6 class="mb-0 text-sm">{{ $item->nama }}</h6>
+                                            <td>
                                                 <a href="" type="button" class="btn btn-primary"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#picture{{ $item->id }}">picture</a>
-                                            </td>
-                                            <td class="align-middle">
                                                 @can('admin')
                                                     <a href="" type="button" class="btn btn-warning"
                                                         data-bs-toggle="modal"
@@ -151,8 +147,7 @@
 
 
     <!-- Category Add-->
-    <div class="modal fade" id="createCategories" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="createCategories" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

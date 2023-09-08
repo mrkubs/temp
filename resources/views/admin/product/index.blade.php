@@ -89,7 +89,7 @@
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $item->categories->nama }}</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <td class="align-middle text-center">
                                                 <a href="" type="button" class="btn btn-primary"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#picture{{ $item->id }}">picture</a>
