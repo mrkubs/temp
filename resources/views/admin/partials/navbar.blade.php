@@ -1,21 +1,97 @@
-<nav class="navbar navbar-expand-md bg-body-tertiary">
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between d-md-none d-block">
-            <a class="navbar-brand fs-4" href="#">Jarvis Resto</a>
-            <button class="btn px-1 py-0 open-btn"><i class="fa-solid fa-bars-staggered"></i></button>
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="index-2.html" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="/assets/images/logo-bk.png" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="/assets/images/logo-bk.png" alt="" height="20">
+                    </span>
+                </a>
+
+                <a href="index-2.html" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="/assets/images/logo-bk.png" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="/assets/images/logo-bk.png" alt="" height="20">
+                    </span>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+            <!-- App Search-->
+            <form class="app-search d-none d-lg-block">
+                <div class="position-relative">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="uil-search"></span>
+                </div>
+            </form>
         </div>
-        <button class="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i
-                            class="fa-solid fa-user border-radius-lg px-2"></i>{{ auth()->user()->name }}</a>
-                </li>
-            </ul>
+
+        <div class="d-flex">
+
+            <div class="dropdown d-inline-block d-lg-none ms-2">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="uil-search"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                    aria-labelledby="page-header-search-dropdown">
+
+                    <form class="p-3">
+                        <div class="m-0">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search ..."
+                                    aria-label="Recipient's username">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="mdi mdi-magnify"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="dropdown d-none d-lg-inline-block ms-1">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                    <i class="uil-minus-path"></i>
+                </button>
+            </div>
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-4.jpg"
+                        alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{ Auth::user()->name }}</span>
+                    <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button class="dropdown-item" href="#"><i
+                                class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">Sign out</span></button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                    <i class="uil-cog"></i>
+                </button>
+            </div>
+
         </div>
     </div>
-</nav>
+</header>
