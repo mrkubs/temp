@@ -30,7 +30,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row"><h4 class="mb-0">{{ $title }} Table</h4>
+
+                
         <div class="col-12">
             <div class="card">
                 <div class="card-body">

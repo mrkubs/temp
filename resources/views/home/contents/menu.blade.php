@@ -45,7 +45,7 @@
                                 <img class="img-fluid" src="\img\{{ $product->gambar }}" alt="">
                             </div>
                             <h5 class="mb-0">{{ $product->nama }}</h5>
-                            <small>Rp.{{ $product->harga }}</small>
+                            <small>@currency($product->harga)</small>
                             <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fa fa-info"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i

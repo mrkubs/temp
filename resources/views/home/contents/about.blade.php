@@ -28,14 +28,17 @@
                     <h1 class="mb-4">Welcome to <img src="assets/images/logo-bk-crop.png" alt="Logo"
                             style="height:25px">
                     </h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et
-                        eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                    <p class="mb-4">Jarvis Resto is a restaurant that offers an extraordinary culinary experience with a
+                        touch of luxury and unparalleled quality. Located in a convenient and elegant setting, this
+                        restaurant combines beautiful interior design with high-quality dishes and friendly customer
+                        service.</p>
+                    <p class="mb-4">Jarvis Resto began with the vision of a talented chef, Chef Michael Jarvis, who
+                        aspired to create a place where people could enjoy exceptional cuisine in a special atmosphere. In
+                        2010, Chef Jarvis embarked on this culinary journey by opening his first restaurant.</p>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+                                <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">13</h1>
                                 <div class="ps-4">
                                     <p class="mb-0">Years of</p>
                                     <h6 class="text-uppercase mb-0">Experience</h6>
@@ -44,7 +47,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                                <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">4</h1>
                                 <div class="ps-4">
                                     <p class="mb-0">Popular</p>
                                     <h6 class="text-uppercase mb-0">Master Chefs</h6>
