@@ -18,7 +18,6 @@
                                 <img class="img-fluid" src="\img\categories\{{ $category->gambar }}" alt="">
                             </div>
                             <h5 class="mt-5">{{ $category->nama }}</h5>
-                            <small>Description</small>
                             <div class="mt-2">
                                 <a href="view-category/{{ $category->id }}" class="link-warning">View More</a>
                             </div>

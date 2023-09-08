@@ -13,7 +13,7 @@ class MenuFilterController extends Controller
         //return $request->all();
         $products = Products::query();
         $categories = Categories::query();
-        $title = 'Menu - '.$request->name;
+        $title = 'Menu';
         //filter by name
         $products->when($request->name, function($query)use ($request){
             return $query->where('nama','like','%'.$request->name.'%');
