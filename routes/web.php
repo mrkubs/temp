@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuFilterController;
 use App\Http\Controllers\CategoryMenuController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ViewCategoryController;
 use App\Http\Controllers\ForgotPasswordController;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/categories', CategoryController::class);
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
 });
 
 //Superuser Page
