@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuFilterController;
 use App\Http\Controllers\CategoryMenuController;
 use App\Http\Controllers\ViewCategoryController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
