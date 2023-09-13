@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->text('gambar')->nullable();
             $table->unsignedBigInteger('categories_id');
+            $table->text('description');
             $table->foreign('categories_id')->references('id')->on('categories')
                 ->onDelete('no action')->onUpdate('no action');
             $table->timestamps();

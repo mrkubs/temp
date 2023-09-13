@@ -47,7 +47,8 @@
                             <h5 class="mb-0">{{ $product->nama }}</h5>
                             <small>@currency($product->harga)</small>
                             <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fa fa-info"></i></a>
+                                <a class="btn btn-square btn-primary mx-1" href=""data-bs-toggle="modal"
+                                    data-bs-target="#detailMenu{{ $product->id }}"><i class="fa fa-info"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fa fa-cart-plus"></i></a>
                             </div>
@@ -59,4 +60,59 @@
     </div>
     </div>
     <!-- Team End -->
+
+    <!-- View Detail Menu-->
+    @foreach ($products as $product)
+        <div class="modal fade" id="detailMenu{{ $product->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <section style="background-color: #eee;">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12">
+                                    <div class="card text-black">
+                                        <img src="\img\{{ $product->gambar }}" class="card-img-top" alt="Menu" />
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <h5 class="card-title">{{ $product->nama }}</h5>
+                                                <p class="">Description :</p>
+                                                <p class="text-muted mb-4">{{ $product->description }}</p>
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span>Harga </span><span> : @currency($product->harga)</span>
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span>Status </span><span> :
+                                                        @if ($product->is_ready === 1)
+                                                            Ready
+                                                        @else
+                                                            Kosong
+                                                        @endif
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <span>Category </span><span> : {{ $product->categories->nama }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                                <a href="/menu" class="btn btn-primary py-2 px-4">Add to Cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
