@@ -3,6 +3,7 @@
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -70,10 +71,12 @@ Route::controller(ViewCategoryController::class)->group(function(){
     Route::get('/view-category/{id}','index');
 });
 
-//Filter
+//Filter and Search
 Route::controller(MenuFilterController::class)->group(function(){
     Route::get('/search','search') ->name('menu.search');
 });
 
-//Detail Product
-Route::get('/detail-product', [DetailProductController::class, 'index']);
+//Cart
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart/cart/{id}', [CartController::class, 'tambah']) -> where ('id','[0-9]+');
+Route::DELETE('/delete-cart-product', [CartController::class, 'delete']) -> name ('delete.cart.product');

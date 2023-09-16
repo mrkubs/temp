@@ -17,8 +17,9 @@
                         <a href="/about" class="nav-item nav-link {{ $title === 'About' ? 'active' : '' }}">About</a>
                     </div>
                 </div>
-                <a href="/menu" class="btn btn-primary py-2 px-4"><i class="fa fa-shopping-cart"
-                        style="color: #ffffff;"></i> Cart <span class="badge bg-danger">0</span></a>
+                <a href="/cart" class="btn btn-primary py-2 px-4"><i class="fa fa-shopping-cart"
+                        style="color: #ffffff;"></i> Cart <span
+                        class="badge bg-danger">{{ count((array) session('cart')) }}</span></a>
 
         </div>
         </nav>

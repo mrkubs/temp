@@ -10,6 +10,13 @@
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h5 class="section-title ff-secondary text-center text-primary fw-normal">Menu</h5>
                 <h1 class="mb-3">Our Menu</h1>
+                @if (session()->has('added'))
+                    <div class="alert alert-success text-center fade show" role="alert">
+                        {{ session('added') }}
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="row g-4 mb-3">
                     <div class="col-sm-12 d-flex justify-content-center">
                         <form action="/search" method="get">
@@ -49,7 +56,7 @@
                             <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""data-bs-toggle="modal"
                                     data-bs-target="#detailMenu{{ $product->id }}"><i class="fa fa-info"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i
+                                <a class="btn btn-square btn-primary mx-1" href="/cart/cart/{{ $product->id }}"><i
                                         class="fa fa-cart-plus"></i></a>
                             </div>
                         </div>

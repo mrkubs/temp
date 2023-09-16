@@ -35,7 +35,6 @@
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -56,6 +55,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/wow/wow.min.js"></script>
     <script src="/lib/easing/easing.min.js"></script>
@@ -68,4 +68,6 @@
 
     <!-- Template Javascript -->
     <script src="/js/main.js"></script>
+
+    @yield('script')
 </body>
