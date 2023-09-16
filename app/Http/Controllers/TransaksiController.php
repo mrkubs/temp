@@ -11,7 +11,7 @@ class TransaksiController extends Controller
     public function index()
     {
         $transaksi = Transaction::all();
-        $pesanan = Pesanan::all();
+        $pesanan = Pesanan::where('status', '!=', 'success')->get();
         return view('admin.transaksi.index', [
             'transaksi' => $transaksi,
             'pesanan' => $pesanan,
