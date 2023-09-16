@@ -17,6 +17,7 @@ use App\Http\Controllers\CategoryMenuController;
 use App\Http\Controllers\ViewCategoryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::group(['middleware' => ['auth', 'level:admin,kasir,manager']], function (
 //Superuser Page
 Route::group(['middleware' => ['auth', 'level:admin,manager']], function () {
     Route::resource('/user', UserController::class);
+    Route::post('laporan/pesanan', [LaporanController::class, 'pesanan'])->name('laporan.pesanan');
+    Route::post('laporan/transaksi', [LaporanController::class, 'transaksi'])->name('laporan.transaksi');
 });
 
 

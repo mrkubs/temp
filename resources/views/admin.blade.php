@@ -242,6 +242,115 @@
 
     @yield('footer')
 
+
+    <!-- Modal Pesanan-->
+    <div class="modal fade" id="lprpesanan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Filter Laporan Pesanan
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/laporan/pesanan" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Bulan</label>
+                                <select name="bulan" class="form-control" required>
+                                    <option value="01" {{ date('m') == '01' ? 'selected' : '' }}>Januari</option>
+                                    <option value="02" {{ date('m') == '02' ? 'selected' : '' }}>Februari</option>
+                                    <option value="03" {{ date('m') == '03' ? 'selected' : '' }}>Maret</option>
+                                    <option value="04" {{ date('m') == '04' ? 'selected' : '' }}>April</option>
+                                    <option value="05" {{ date('m') == '05' ? 'selected' : '' }}>Mei</option>
+                                    <option value="06" {{ date('m') == '06' ? 'selected' : '' }}>Juni</option>
+                                    <option value="07" {{ date('m') == '07' ? 'selected' : '' }}>Juli</option>
+                                    <option value="08" {{ date('m') == '08' ? 'selected' : '' }}>Agustus</option>
+                                    <option value="09" {{ date('m') == '09' ? 'selected' : '' }}>September
+                                    </option>
+                                    <option value="10" {{ date('m') == '10' ? 'selected' : '' }}>Oktober</option>
+                                    <option value="11" {{ date('m') == '11' ? 'selected' : '' }}>November</option>
+                                    <option value="12" {{ date('m') == '12' ? 'selected' : '' }}>Desember</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="">Tahun</label>
+                                <select name="tahun" class="form-control" required>
+                                    <?php
+                                    $mulai = date('Y') - 20;
+                                    for ($i = $mulai; $i < $mulai + 100; $i++) {
+                                        $sel = $i == date('Y') ? ' selected="selected"' : '';
+                                        echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            aria-label="Close">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Transaksi-->
+    <div class="modal fade" id="lprtransaksi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Filter Laporan Transaksi
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/laporan/transaksi" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="">Bulan</label>
+                                <select name="bulan" class="form-control" required>
+                                    <option value="01" {{ date('m') == '01' ? 'selected' : '' }}>Januari</option>
+                                    <option value="02" {{ date('m') == '02' ? 'selected' : '' }}>Februari</option>
+                                    <option value="03" {{ date('m') == '03' ? 'selected' : '' }}>Maret</option>
+                                    <option value="04" {{ date('m') == '04' ? 'selected' : '' }}>April</option>
+                                    <option value="05" {{ date('m') == '05' ? 'selected' : '' }}>Mei</option>
+                                    <option value="06" {{ date('m') == '06' ? 'selected' : '' }}>Juni</option>
+                                    <option value="07" {{ date('m') == '07' ? 'selected' : '' }}>Juli</option>
+                                    <option value="08" {{ date('m') == '08' ? 'selected' : '' }}>Agustus</option>
+                                    <option value="09" {{ date('m') == '09' ? 'selected' : '' }}>September
+                                    </option>
+                                    <option value="10" {{ date('m') == '10' ? 'selected' : '' }}>Oktober</option>
+                                    <option value="11" {{ date('m') == '11' ? 'selected' : '' }}>November</option>
+                                    <option value="12" {{ date('m') == '12' ? 'selected' : '' }}>Desember</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="">Tahun</label>
+                                <select name="tahun" class="form-control" required>
+                                    <?php
+                                    $mulai = date('Y') - 20;
+                                    for ($i = $mulai; $i < $mulai + 100; $i++) {
+                                        $sel = $i == date('Y') ? ' selected="selected"' : '';
+                                        echo '<option value="' . $i . '"' . $sel . '>' . $i . '</option>';
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                            aria-label="Close">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 
 

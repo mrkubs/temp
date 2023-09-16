@@ -34,7 +34,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <li >
+                <li>
                     <a href="/dashboard">
                         <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end">01</span>
                         <span>Dashboard</span>
@@ -69,14 +69,27 @@
                     </a>
                 </li>
                 @can('superuser')
-                <li class="menu-title">Auth</li>
+                    <li class="menu-title">Laporan</li>
+                    <li>
+                        <a data-bs-toggle="modal" class=" waves-effect" data-bs-target="#lprpesanan">
+                            <i class="uil-shopping-basket"></i>
+                            <span>Lpr Pesanan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-bs-toggle="modal" class=" waves-effect" data-bs-target="#lprtransaksi">
+                            <i class="uil-wifi"></i>
+                            <span>Lpr Transaksi</span>
+                        </a>
+                    </li>
+                    <li class="menu-title">Auth</li>
 
-                <li>
-                    <a href="/user" class="waves-effect">
-                        <i class="uil-user-circle"></i>
-                        <span>User</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="/user" class="waves-effect">
+                            <i class="uil-user-circle"></i>
+                            <span>User</span>
+                        </a>
+                    </li>
                 @endcan
             </ul>
         </div>
