@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pesanan;
+use App\Models\Products;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,11 +15,30 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $tenDaysAgo = now()->subDays(10);
+
+        $pesananTerbaru = Pesanan::where('created_at', '>=', $tenDaysAgo)
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        $categories = $pesananTerbaru->pluck('created_at')->map(function ($date) {
+            return $date->format('M d');
+        });
+
+        $data = $pesananTerbaru->pluck('total_harga');
         return view('admin.dashboard', [
-            "title"=> "Dashboard",
+            "title" => "Dashboard",
+            'totalpesanan' => Pesanan::count(),
+            'totaltransaction' => Transaction::count(),
+            'totalproducts' => Products::count(),
+            'totaluser' => User::where('level', 'user')->count(),
+            'userterbaru' => User::orderBy('created_at', 'desc')->latest()->limit(8)->get(),
+            'pesananterbaru' => Pesanan::orderBy('created_at', 'desc')->latest()->limit(8)->get(),
+            'transactionterbaru' => Transaction::orderBy('created_at', 'desc')->latest()->limit(8)->get(),
+            'data' => $data,
+            'categories' => $categories,
             //'isAuthPage' => true,
-        
-            ]);
+        ]);
     }
 
     /**
