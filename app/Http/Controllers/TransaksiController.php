@@ -26,4 +26,21 @@ class TransaksiController extends Controller
         ]);
         return redirect()->back()->with('success', 'Status transaksi berhasil diubah');
     }
+    public function store(Request $request)
+    {
+        try {
+
+            $transaksi = new Transaction;
+            $transaksi->pesanan_id = $request->pesanan_id;
+            $transaksi->total_bayar = $request->total_bayar;
+            $transaksi->jumlah_bayar = $request->jumlah_bayar;
+            $transaksi->kembalian = $request->kembalian;
+            $transaksi->status = $request->status;
+            $transaksi->save();
+            return redirect()->back()->with('success', 'Transaksi berhasil ditambahkan');
+        } catch (\Throwable $th) {
+            // tampilkan error
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
 }

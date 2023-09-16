@@ -49,8 +49,7 @@ Route::group(['middleware' => ['auth', 'level:admin,kasir,manager']], function (
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/categories', CategoryController::class);
-    Route::get('/transaksi', [TransaksiController::class, 'index']);
-    Route::put('/transaksi/{id}', [TransaksiController::class, 'update']);
+    Route::resource('/transaksi', TransaksiController::class);
 });
 
 //Superuser Page

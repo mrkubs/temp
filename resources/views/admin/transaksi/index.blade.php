@@ -45,7 +45,6 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-
                         <table id="datatable-buttons" class="table table-striped table-bordered nowrap"
                             style=" border-collapse: collapse; border-spacing: 0; width: 100%; ">
                             <thead>
@@ -69,7 +68,6 @@
                                         <td>{{ number_format($item->kembalian, 0, ',', '.') }} </td>
                                         <td class="table-{{ $item->status == 'success' ? 'success' : 'warning' }}">
                                             {{ $item->status }}</td>
-
                                         <td class="d-flex">
                                             @if ($item->status != 'success')
                                                 <a href="" type="button" class="btn btn-warning btn-sm"
@@ -137,31 +135,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="transaksi" method="POST">
+                    <form action="/transaksi" method="POST">
                         @csrf
                         <div class="form-group mb-3">
-                            <label for="pesanan_id">Pesanan_id</label>
-                            <select name="pesanan_id" class="form-control select2" required>
+                            <label for="pesanan_id">Pesanan</label>
+                            <select name="pesanan_id" id="pesanan_id" class="form-control" required>
+                                <option value="">~ Silahkan Pilih ~</option>
                                 @foreach ($pesanan as $item)
-                                    <option value="{{$item->id}}">{{"kode : ". $item->kode_pesanan . " | meja : ". $item->nomeja . " | pemesan : $item->nama_pemesan" }}</option>
+                                    <option value="{{ $item->id }}" data-harga="{{ $item->total_harga }}">
+                                        {{ 'kode : ' . $item->kode_pesanan . ' | meja : ' . $item->nomeja . " | pemesan : $item->nama_pemesan" }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group mb-3">
                             <label for="total_bayar">Total bayar</label>
-                            <input type="number" name="total_bayar" on id="total_bayar" value="0" class="form-control" required>
+                            <input type="number" name="total_bayar" on id="total_bayar" value="0" class="form-control"
+                                readonly>
                         </div>
                         <div class="form-group mb-3">
                             <label for="jumlah_bayar">Jumlah bayar</label>
-                            <input type="number" name="jumlah_bayar" id="jumlah_bayar" value="0" class="form-control" required>
+                            <input type="number" name="jumlah_bayar" id="jumlah_bayar" value="0" class="form-control"
+                                onkeyup="Bayar()" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="jumlah_bayar">Jumlah bayar</label>
-                            <input type="number" name="jumlah_bayar" class="form-control" required>
+                            <label for="kembalian">Kembalian</label>
+                            <input type="number" name="kembalian" id="kembalian" value="0" class="form-control"
+                                readonly>
                         </div>
                         <div class="form-group mb-3">
                             <label for="status">Status</label>
-                            <select name="status" class="form-control">
+                            <select name="status" class="form-control" required>
                                 <option value="success">
                                     Success
                                 </option>
@@ -173,10 +177,34 @@
                                 </option>
                             </select>
                         </div>
-                        <input type="submit" class="btn btn-warning mt-3" value="Add">
+                        <input type="submit" class="btn btn-primary mt-3" value="submit">
                     </form>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var pesananSelect = document.getElementById("pesanan_id");
+            var totalBayarInput = document.getElementById("total_bayar");
+
+            pesananSelect.addEventListener("change", function() {
+                var selectedOption = pesananSelect.options[pesananSelect.selectedIndex];
+                var harga = selectedOption.getAttribute("data-harga");
+
+                // Mengisi nilai total_bayar dengan harga yang dipilih
+                totalBayarInput.value = harga;
+            });
+        });
+        // bayar
+        function Bayar() {
+            var total_bayar = document.getElementById("total_bayar").value;
+            var jumlah_bayar = document.getElementById("jumlah_bayar").value;
+
+            var hasil = jumlah_bayar - total_bayar;
+            document.getElementById("kembalian").value = hasil;
+        }
+    </script>
 @endsection
