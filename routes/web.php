@@ -18,6 +18,7 @@ use App\Http\Controllers\ViewCategoryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['auth', 'level:admin,kasir,manager']], function (
     Route::resource('/product', ProductController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/transaksi', TransaksiController::class);
+    Route::get('/pesanan', [PesananController::class, 'index']);
 });
 
 //Superuser Page
