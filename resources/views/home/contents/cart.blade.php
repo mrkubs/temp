@@ -21,7 +21,7 @@
                     </div>
                     @if (session('cart'))
                         @foreach (session('cart') as $id => $product)
-                            <div class="card rounded-3 mb-4" rowId="{{ $id }}">
+                            <div class="card rounded-3 mb-4">
                                 <div class="card-body p-4">
                                     <div class="row d-flex justify-content-between align-items-center">
                                         <div class="col-md-2 col-lg-2 col-xl-2">
@@ -52,8 +52,7 @@
                                             <h5 class="mb-0"> {{ $product['price'] }}</h5>
                                         </div>
                                         <div class="actions col-md-1 col-lg-1 col-xl-1 text-end">
-                                            <button class="btn text-danger btn-sm delete-cart"><i
-                                                    class="fas fa-trash fa-lg"></i></button>
+                                             <button class="btn text-danger btn-sm delete-cart" data-product-id="{{ $id }}"><i class="fas fa-trash fa-lg"></i></button>
 
                                         </div>
                                     </div>
@@ -90,24 +89,32 @@
 
 @section('script')
     <script type="text/javascript">
-        $('.delete-cart').click(function(e) {
-            e.preventDefault();
+        $(document).ready(function() {
+            $('.delete-cart').click(function(e) {
+                e.preventDefault();
 
-            var ele = $(this);
+                var productId = $(this).data('product-id'); 
 
-            if (confirm("Do you really want to delete?")) {
-                $.ajax({
-                    url: '{{ route('delete.cart.product') }}',
-                    method: "DELETE",
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        id: ele.parents("div").attr("rowId")
-                    },
-                    success: function(response) {
-                        window.location.reload();
-                    }
-                });
-            }
+                if (confirm("Do you really want to delete?")) {
+                    $.ajax({
+                        url: '/delete-cart-product/' + productId, 
+                        method: "DELETE",
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                window.location.reload();
+                            } else {
+                                alert('Failed to delete item.');
+                            }
+                        },
+                        error: function(xhr) {
+                            alert('Error: ' + xhr.statusText);
+                        }
+                    });
+                }
+            });
         });
     </script>
 @endsection

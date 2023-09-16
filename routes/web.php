@@ -31,21 +31,21 @@ use App\Http\Controllers\ForgotPasswordController;
 
 //Autentication
 Route::controller(AuthController::class)->group(function () {
-    Route::get('/login','index') ->name('login');
-    Route::post('/login','authenticate') ->name('auth');
-    Route::post('/logout','logout') ->name('logout');
+    Route::get('/login', 'index')->name('login');
+    Route::post('/login', 'authenticate')->name('auth');
+    Route::post('/logout', 'logout')->name('logout');
 });
 
 //Forgot Password
-Route::controller(ForgotPasswordController::class)->group(function(){
-    Route::get('/forget-password','showForgetPasswordForm') ->name('forget.password.get');
-    Route::post('/forget-password','submitForgetPasswordForm') ->name('forget.password.post');
-    Route::get('reset-password/{token}','showResetPasswordForm') ->name('reset.password.get');
-    Route::post('/reset-password','submitResetPasswordForm') ->name('reset.password.post');
+Route::controller(ForgotPasswordController::class)->group(function () {
+    Route::get('/forget-password', 'showForgetPasswordForm')->name('forget.password.get');
+    Route::post('/forget-password', 'submitForgetPasswordForm')->name('forget.password.post');
+    Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
+    Route::post('/reset-password', 'submitResetPasswordForm')->name('reset.password.post');
 });
 
 //Admin General Page
-Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
+Route::group(['middleware' => ['auth', 'level:admin,kasir,manager']], function () {
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/product', ProductController::class);
     Route::resource('/categories', CategoryController::class);
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth','level:admin,kasir,manager']], function(){
 });
 
 //Superuser Page
-Route::group(['middleware' => ['auth','level:admin,manager']], function(){
+Route::group(['middleware' => ['auth', 'level:admin,manager']], function () {
     Route::resource('/user', UserController::class);
 });
 
@@ -67,16 +67,16 @@ Route::resource('/about', AboutController::class);
 
 
 //View By Category
-Route::controller(ViewCategoryController::class)->group(function(){
-    Route::get('/view-category/{id}','index');
+Route::controller(ViewCategoryController::class)->group(function () {
+    Route::get('/view-category/{id}', 'index');
 });
 
 //Filter and Search
-Route::controller(MenuFilterController::class)->group(function(){
-    Route::get('/search','search') ->name('menu.search');
+Route::controller(MenuFilterController::class)->group(function () {
+    Route::get('/search', 'search')->name('menu.search');
 });
 
 //Cart
 Route::get('/cart', [CartController::class, 'index']);
-Route::get('/cart/cart/{id}', [CartController::class, 'tambah']) -> where ('id','[0-9]+');
-Route::DELETE('/delete-cart-product', [CartController::class, 'delete']) -> name ('delete.cart.product');
+Route::get('/cart/cart/{id}', [CartController::class, 'tambah'])->where('id', '[0-9]+');
+Route::delete('/delete-cart-product/{id}', [CartController::class, 'delete'])->name('delete.cart.product');

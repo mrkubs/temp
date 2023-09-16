@@ -82,17 +82,17 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(Request $request)
+    public function delete($id)
     {
-        if($request->id) {
-            $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('deleted', 'Book successfully deleted.');
-        }else{
-            session()->flash('deleted', 'Failed to delete item.');
+        $cart = session()->get('cart');
+
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
         }
     }
 }
