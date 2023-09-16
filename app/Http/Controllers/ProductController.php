@@ -47,6 +47,7 @@ class ProductController extends Controller
             'categories_id.required' => 'Field Categori Tidak Boleh Kosong',
             'gambar.mimes' => 'format yang diterima hanya JPG, JPEG, PNG',
             'gambar.max' => 'Ukuran Yang Diboleh Tidak Boleh Melebihi 2Mb',
+            'description.required' => 'Description Product Tidak Boleh Kosong',
         ];
 
         $request->validate([
@@ -55,7 +56,8 @@ class ProductController extends Controller
             'is_ready' => 'required|max:1',
             'jenis' => 'required',
             'categories_id' => 'required',
-            'gambar' => 'mimes:png,jpg,jpeg'
+            'gambar' => 'mimes:png,jpg,jpeg',
+            'description' => 'required',
         ], $message);
 
         $namaFile = time().'-'.Str::slug($request->nama, '-').'.'.$request->gambar->extension();
@@ -70,6 +72,7 @@ class ProductController extends Controller
         $product->jenis = $request->jenis;
         $product->categories_id = $request->categories_id;
         $product->gambar = $namaFile;
+        $product->description = $request->description;
 
         $product->save();
 
@@ -113,6 +116,7 @@ class ProductController extends Controller
             'categories_id.required' => 'Field Categori Tidak Boleh Kosong',
             'gambar.mimes' => 'format yang diterima hanya JPG, JPEG, PNG',
             'gambar.max' => 'Ukuran Yang Diboleh Tidak Boleh Melebihi 2Mb',
+            'description.required' => 'Description Product Tidak Boleh Kosong',
         ];
 
         $request->validate([
@@ -121,7 +125,8 @@ class ProductController extends Controller
             'is_ready' => 'required|max:1',
             'jenis' => 'required',
             'categories_id' => 'required',
-            'gambar' => 'mimes:png,jpg,jpeg|max:2048'
+            'gambar' => 'mimes:png,jpg,jpeg|max:2048',
+            'description' => 'required',
         ], $message);
 
         $product = Products::find($id);
@@ -142,6 +147,7 @@ class ProductController extends Controller
         $product->is_ready = $request->is_ready;
         $product->categories_id = $request->categories_id;
         $product->jenis = $request->jenis;
+        $product->description = $request->description;
         $product->save();
 
         return redirect('/product');

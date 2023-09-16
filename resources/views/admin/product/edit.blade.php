@@ -78,7 +78,18 @@
                                         </div>
                                     @enderror
                                 </div>
-
+                                <div class="mb-3">
+                                    <label for="productDesc" class="form-label">Deskripsi Product</label>
+                                    <input type="text" name="description"
+                                        class="form-control @error('description') is-invalid @enderror"
+                                        value="{{ old('description', $product->description) }}" id="productDesc"
+                                        aria-describedby="emailHelp">
+                                    @error('description')
+                                        <div class="invalid-feedback text-danger">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">

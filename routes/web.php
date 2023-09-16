@@ -10,10 +10,12 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\MenuFilterController;
 use App\Http\Controllers\CategoryMenuController;
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\ViewCategoryController;
+use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +65,7 @@ Route::resource('/menu', MenuController::class);
 Route::resource('/about', AboutController::class);
 
 
+//View By Category
 Route::controller(ViewCategoryController::class)->group(function(){
     Route::get('/view-category/{id}','index');
 });
@@ -71,3 +74,6 @@ Route::controller(ViewCategoryController::class)->group(function(){
 Route::controller(MenuFilterController::class)->group(function(){
     Route::get('/search','search') ->name('menu.search');
 });
+
+//Detail Product
+Route::get('/detail-product', [DetailProductController::class, 'index']);

@@ -32,7 +32,7 @@
     </div>
     <div class="row">
 
-                
+
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -86,10 +86,11 @@
                                     </td>
                                     <td class="d-flex">
                                         @can('admin')
-                                                <a href="/product/{{ $item->id }}/edit"><button
-                                                        class="btn btn-warning btn-sm">Edit</button></a>
-                                                <a href="" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteProduct{{ $item->id }}">Delete</a>
+                                            <a href="/product/{{ $item->id }}/edit"><button
+                                                    class="btn btn-warning btn-sm">Edit</button></a>
+                                            <a href="" type="button" class="btn btn-danger btn-sm"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteProduct{{ $item->id }}">Delete</a>
                                         @endcan
                                     </td>
                                 </tr>
@@ -125,8 +126,8 @@
 
     <!-- Modal picture-->
     @foreach ($products as $item)
-        <div class="modal fade" id="deleteProduct{{ $item->id }}" tabindex="-1"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="deleteProduct{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
