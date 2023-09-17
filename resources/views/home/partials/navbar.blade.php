@@ -17,9 +17,14 @@
                         <a href="/about" class="nav-item nav-link {{ $title === 'About' ? 'active' : '' }}">About</a>
                     </div>
                 </div>
-                <a href="/cart" class="btn btn-primary py-2 px-4"><i class="fa fa-shopping-cart"
-                        style="color: #ffffff;"></i> Cart <span
-                        class="badge bg-danger">{{ count((array) session('cart')) }}</span></a>
+                <a href="/order" class="btn btn-primary py-2 px-4"><i class="fa fa-shopping-cart"
+                        style="color: #ffffff;"></i> Cart <span class="badge bg-danger">
+                        @if (session('cart'))
+                            {{ $orders }}
+                        @else
+                            0
+                        @endif
+                    </span></a>
 
         </div>
         </nav>

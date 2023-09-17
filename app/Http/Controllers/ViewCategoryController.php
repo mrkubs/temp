@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Models\PesananDetails;
 
 class ViewCategoryController extends Controller
 {   
@@ -19,7 +20,8 @@ class ViewCategoryController extends Controller
             $categories = Categories::where('id',$id)->first();
             $products = Products::where('categories_id',$categories->id)->get();
             $title = 'Menu';
-            return view('home.contents.menu', compact('categories','products','title','cate'));
+            $orders = PesananDetails::count();
+            return view('home.contents.menu', compact('categories','products','title','cate','orders'));
 
         }else{
             return redirect('/category')->with('status',"Category Doesn't Exist");

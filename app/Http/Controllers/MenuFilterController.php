@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
 use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Models\PesananDetails;
 
 class MenuFilterController extends Controller
 {
@@ -13,6 +14,7 @@ class MenuFilterController extends Controller
         //return $request->all();
         $products = Products::query();
         $categories = Categories::query();
+        $orders = PesananDetails::count();
         $title = 'Menu';
         //filter by name
         $products->when($request->name, function($query)use ($request){
@@ -26,6 +28,6 @@ class MenuFilterController extends Controller
         });
         $category = Categories::all();
 
-        return view('home.contents.menu', ['products' => $products->paginate(10),'title' => $title,'cate'=>$category]);
+        return view('home.contents.menu', ['products' => $products->paginate(10),'title' => $title,'cate'=>$category,'orders'=>$orders]);
     }
 }

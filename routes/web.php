@@ -8,6 +8,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AddCartController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -17,8 +21,7 @@ use App\Http\Controllers\CategoryMenuController;
 use App\Http\Controllers\ViewCategoryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\PesananController;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +83,13 @@ Route::controller(MenuFilterController::class)->group(function () {
     Route::get('/search', 'search')->name('menu.search');
 });
 
-//Cart
-Route::get('/cart', [CartController::class, 'index']);
-Route::get('/cart/cart/{id}', [CartController::class, 'tambah'])->where('id', '[0-9]+');
-Route::delete('/delete-cart-product/{id}', [CartController::class, 'delete'])->name('delete.cart.product');
+//Details
+Route::get('/details', [AddCartController::class, 'index']);
+Route::get('/details/add/{id}', [AddCartController::class, 'tambah'])->where('id', '[0-9]+');
+Route::delete('/delete-cart-product/{id}', [AddCartController::class, 'delete'])->name('delete.cart.product');
+
+
+
+//Order
+Route::post('/order/{id}', [OrderController::class, 'add']);
+Route::get('/order', [OrderController::class, 'index']);

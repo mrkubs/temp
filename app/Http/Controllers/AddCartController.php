@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PesananDetails;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class AddCartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,15 +14,21 @@ class CartController extends Controller
     public function index()
     {
         return view('home.contents.cart', [
-            "title"=> "Cart"
+            "title"=> "AddCart",
+            "orders" => PesananDetails::count()
             ]);
     }
 
     public function tambah($id)
     {
-        
-            $title = "Cart";
+
+            
+
+            //$title = "Cart";
             $product = Products::findOrFail($id);
+            if($product->is_ready === 0){
+            return redirect('menu')->with('failed', 'Item tidak tersedia');
+            }
             $cart = session()->get('cart',[]);
             if(isset($cart[$id])){
                 $cart[$id]['quantity']++;
@@ -31,11 +38,12 @@ class CartController extends Controller
                     "quantity" => 1,
                     "price" => $product->harga,
                     "image" => $product->gambar,
-                    "category" => $product->categories
+                    "category" => $product->categories,
+                    "id" => $product->id
                 ];
             }
             session()->put('cart', $cart);
-            return redirect()->back()->with('added', 'Item has been added to cart!');
+            return redirect('/details');
 
     }
 

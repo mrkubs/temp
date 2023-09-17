@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
 use App\Models\Category;
 use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use App\Models\PesananDetails;
 
 class CategoryMenuController extends Controller
 {
@@ -16,7 +17,8 @@ class CategoryMenuController extends Controller
     {
         return view('home.contents.category', [
             "title"=> "Category",
-            "categories" => Categories::paginate(8)
+            "categories" => Categories::paginate(8),
+            "orders" => PesananDetails::count()
             ]);
             
     }

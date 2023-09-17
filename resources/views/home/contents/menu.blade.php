@@ -13,8 +13,11 @@
                 @if (session()->has('added'))
                     <div class="alert alert-success text-center fade show" role="alert">
                         {{ session('added') }}
-
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if (session()->has('failed'))
+                    <div class="alert alert-danger text-center fade show" role="alert">
+                        {{ session('failed') }}
                     </div>
                 @endif
                 <div class="row g-4 mb-3">
@@ -56,7 +59,7 @@
                             <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""data-bs-toggle="modal"
                                     data-bs-target="#detailMenu{{ $product->id }}"><i class="fa fa-info"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href="/cart/cart/{{ $product->id }}"><i
+                                <a class="btn btn-square btn-primary mx-1" href="/details/add/{{ $product->id }}"><i
                                         class="fa fa-cart-plus"></i></a>
                             </div>
                         </div>
@@ -93,14 +96,14 @@
                                             <hr>
                                             <div>
                                                 <div class="d-flex justify-content-center">
-                                                    <span>Harga </span><span> : @currency($product->harga)</span>
+                                                    <span>Price </span><span> : @currency($product->harga)</span>
                                                 </div>
                                                 <div class="d-flex justify-content-center">
                                                     <span>Status </span><span> :
                                                         @if ($product->is_ready === 1)
                                                             Ready
                                                         @else
-                                                            Kosong
+                                                            Out of Stock
                                                         @endif
                                                     </span>
                                                 </div>
@@ -109,7 +112,9 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                                                <a href="/menu" class="btn btn-primary py-2 px-4">Add to Cart
+                                                <a href="/details/add/{{ $product->id }}"
+                                                    class="btn btn-primary py-2 px-4">Add
+                                                    to Cart
                                                 </a>
                                             </div>
                                         </div>
